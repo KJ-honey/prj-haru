@@ -2,11 +2,10 @@
 
 import { useState } from 'react';
 import UnitConverter from './UnitConverter';
-import QRCodeGenerator from './QRCodeGenerator';
 import CurrencyConverter from './CurrencyConverter';
 
 export default function Dashboard() {
-  const [activeTab, setActiveTab] = useState<'home' | 'unit' | 'qr' | 'currency'>('home');
+  const [activeTab, setActiveTab] = useState<'home' | 'unit' | 'currency'>('home');
 
   return (
     <div className="w-full flex-1 flex flex-col">
@@ -45,23 +44,7 @@ export default function Dashboard() {
               </svg>
               <span className="hidden sm:inline">단위 환산기</span>
             </button>
-            <button
-              onClick={() => setActiveTab('qr')}
-              className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 flex items-center gap-2 ${
-                activeTab === 'qr' 
-                  ? 'bg-white dark:bg-gray-800 text-pink-600 dark:text-pink-400 shadow-md transform scale-[1.02]' 
-                  : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-white/50 dark:hover:bg-gray-800/50'
-              }`}
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                <rect x="7" y="7" width="3" height="3"/>
-                <rect x="14" y="7" width="3" height="3"/>
-                <rect x="7" y="14" width="3" height="3"/>
-                <rect x="14" y="14" width="3" height="3"/>
-              </svg>
-              <span className="hidden sm:inline">QR 코드 생성기</span>
-            </button>
+
             <button
               onClick={() => setActiveTab('currency')}
               className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 flex items-center gap-2 ${
@@ -97,11 +80,11 @@ export default function Dashboard() {
                 Utility<span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-pink-500">Hub</span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 font-medium">
-                단위 계산부터 QR 코드 생성까지, 간편한 도구 모음
+                단위 계산부터 환율 변환까지, 간편한 도구 모음
               </p>
             </header>
 
-            <div className="grid sm:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto px-4">
+            <div className="grid sm:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto px-4">
               <button 
                 onClick={() => setActiveTab('unit')} 
                 className="flex flex-col items-center p-8 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-md rounded-[2rem] shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/50 dark:border-white/5 hover:border-indigo-300 dark:hover:border-indigo-700 group hover:-translate-y-2"
@@ -118,25 +101,6 @@ export default function Dashboard() {
                 <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">단위 환산기</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm md:text-base leading-relaxed">
                   부동산 면적 등 다양한 단위를<br className="hidden md:block" /> 빠르고 정확하게 변환
-                </p>
-              </button>
-
-              <button 
-                onClick={() => setActiveTab('qr')} 
-                className="flex flex-col items-center p-8 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-md rounded-[2rem] shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/50 dark:border-white/5 hover:border-pink-300 dark:hover:border-pink-700 group hover:-translate-y-2"
-              >
-                <div className="p-5 bg-pink-100 dark:bg-pink-900/40 rounded-3xl text-pink-600 dark:text-pink-400 group-hover:scale-110 transition-transform duration-300 mb-6 shadow-sm">
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                    <rect x="7" y="7" width="3" height="3"/>
-                    <rect x="14" y="7" width="3" height="3"/>
-                    <rect x="7" y="14" width="3" height="3"/>
-                    <rect x="14" y="14" width="3" height="3"/>
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">QR 코드 생성기</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm md:text-base leading-relaxed">
-                  URL 및 텍스트를 인식 가능한<br className="hidden md:block" /> QR 코드로 즉시 생성
                 </p>
               </button>
 
@@ -160,10 +124,8 @@ export default function Dashboard() {
           </div>
         ) : activeTab === 'unit' ? (
           <UnitConverter />
-        ) : activeTab === 'currency' ? (
-          <CurrencyConverter />
         ) : (
-          <QRCodeGenerator />
+          <CurrencyConverter />
         )}
       </div>
     </div>
