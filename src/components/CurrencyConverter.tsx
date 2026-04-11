@@ -6,6 +6,27 @@ export default function CurrencyConverter() {
   const [value, setValue] = useState<string>("1");
   const [inputType, setInputType] = useState<"usd" | "krw" | "jpy">("usd");
   const [results, setResults] = useState({ usd: "1.00", krw: "1350", jpy: "150" });
+  const [rates, setRates] = useState({ KRW: 1350, JPY: 150 });
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchRates() {
+      try {
+        const res = await fetch("https://api.exchangerate-api.com/v4/latest/USD");
+        if (!res.ok) throw new Error("Failed to fetch");
+        const data = await res.json();
+        setRates({
+          KRW: data.rates.KRW,
+          JPY: data.rates.JPY,
+        });
+      } catch (error) {
+        console.error("Failed to fetch rates, fallback used:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchRates();
+  }, []);
 
   useEffect(() => {
     if (!value || value === ".") {
@@ -22,17 +43,17 @@ export default function CurrencyConverter() {
     if (inputType === "usd") {
       usd = num;
     } else if (inputType === "krw") {
-      usd = num / 1350;
+      usd = num / rates.KRW;
     } else if (inputType === "jpy") {
-      usd = num / 150;
+      usd = num / rates.JPY;
     }
 
     setResults({
       usd: usd.toFixed(2),
-      krw: Math.round(usd * 1350).toLocaleString(),
-      jpy: Math.round(usd * 150).toLocaleString(),
+      krw: Math.round(usd * rates.KRW).toLocaleString(),
+      jpy: Math.round(usd * rates.JPY).toLocaleString(),
     });
-  }, [value, inputType]);
+  }, [value, inputType, rates]);
 
   const units = [
     { id: "jpy", label: "일본 엔 (¥)", icon: "🇯🇵" },
@@ -44,7 +65,14 @@ export default function CurrencyConverter() {
     <div className="flex flex-col gap-8 animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out">
       <div className="text-center mb-4">
         <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">환율 계산기 (Currency Converter)</h2>
-        <p className="text-gray-500 dark:text-gray-400">엔화, 원화, 달러를 손쉽게 상호 변환하세요. (참고용 환율)</p>
+        <p className="text-gray-500 dark:text-gray-400">
+          엔화, 원화, 달러를 손쉽게 상호 변환하세요. 
+          {isLoading ? (
+            <span className="text-blue-500 ml-2 animate-pulse font-medium">실시간 환율 로딩 중...</span>
+          ) : (
+            <span className="text-emerald-500 ml-2 font-medium">실시간 환율 적용됨</span>
+          )}
+        </p>
       </div>
 
       <div className="bg-white/40 dark:bg-black/20 backdrop-blur-md rounded-2xl p-6 border border-white/20 dark:border-white/10 shadow-xl">
@@ -81,9 +109,27 @@ export default function CurrencyConverter() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <ResultCard label="일본 엔 (JPY)" value={`¥${results.jpy}`} active={inputType === "jpy"} icon="🇯🇵" desc="100¥ ≈ 900₩" />
-          <ResultCard label="한국 원 (KRW)" value={`₩${results.krw}`} active={inputType === "krw"} icon="🇰🇷" desc="1,350₩ ≈ $1" />
-          <ResultCard label="미국 달러 (USD)" value={`$${results.usd}`} active={inputType === "usd"} icon="🇺🇸" desc="$1 ≈ 150¥" />
+          <ResultCard 
+            label="일본 엔 (JPY)" 
+            value={`¥${results.jpy}`} 
+            active={inputType === "jpy"} 
+            icon="🇯🇵" 
+            desc={`100¥ ≈ ${Math.round(100 / rates.JPY * rates.KRW).toLocaleString()}₩`} 
+          />
+          <ResultCard 
+            label="한국 원 (KRW)" 
+            value={`₩${results.krw}`} 
+            active={inputType === "krw"} 
+            icon="🇰🇷" 
+            desc={`${Math.round(rates.KRW).toLocaleString()}₩ ≈ $1`} 
+          />
+          <ResultCard 
+            label="미국 달러 (USD)" 
+            value={`$${results.usd}`} 
+            active={inputType === "usd"} 
+            icon="🇺🇸" 
+            desc={`$1 ≈ ${Math.round(rates.JPY).toLocaleString()}¥`} 
+          />
         </div>
       </div>
     </div>
