@@ -3,9 +3,10 @@
 import { useState } from 'react';
 import UnitConverter from './UnitConverter';
 import QRCodeGenerator from './QRCodeGenerator';
+import CurrencyConverter from './CurrencyConverter';
 
 export default function Dashboard() {
-  const [activeTab, setActiveTab] = useState<'home' | 'unit' | 'qr'>('home');
+  const [activeTab, setActiveTab] = useState<'home' | 'unit' | 'qr' | 'currency'>('home');
 
   return (
     <div className="w-full flex-1 flex flex-col">
@@ -61,6 +62,21 @@ export default function Dashboard() {
               </svg>
               <span className="hidden sm:inline">QR 코드 생성기</span>
             </button>
+            <button
+              onClick={() => setActiveTab('currency')}
+              className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 flex items-center gap-2 ${
+                activeTab === 'currency' 
+                  ? 'bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 shadow-md transform scale-[1.02]' 
+                  : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-white/50 dark:hover:bg-gray-800/50'
+              }`}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/>
+                <path d="M12 18V6"/>
+              </svg>
+              <span className="hidden sm:inline">환율 계산기</span>
+            </button>
           </div>
         </div>
       )}
@@ -85,7 +101,7 @@ export default function Dashboard() {
               </p>
             </header>
 
-            <div className="grid sm:grid-cols-2 gap-6 md:gap-8 max-w-3xl mx-auto px-4">
+            <div className="grid sm:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto px-4">
               <button 
                 onClick={() => setActiveTab('unit')} 
                 className="flex flex-col items-center p-8 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-md rounded-[2rem] shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/50 dark:border-white/5 hover:border-indigo-300 dark:hover:border-indigo-700 group hover:-translate-y-2"
@@ -123,10 +139,29 @@ export default function Dashboard() {
                   URL 및 텍스트를 인식 가능한<br className="hidden md:block" /> QR 코드로 즉시 생성
                 </p>
               </button>
+
+              <button 
+                onClick={() => setActiveTab('currency')} 
+                className="flex flex-col items-center p-8 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-md rounded-[2rem] shadow-xl hover:shadow-2xl transition-all duration-300 border border-white/50 dark:border-white/5 hover:border-blue-300 dark:hover:border-blue-700 group hover:-translate-y-2"
+              >
+                <div className="p-5 bg-blue-100 dark:bg-blue-900/40 rounded-3xl text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-300 mb-6 shadow-sm">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/>
+                    <path d="M12 18V6"/>
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">환율 계산기</h3>
+                <p className="text-gray-500 dark:text-gray-400 text-sm md:text-base leading-relaxed">
+                  달러, 엔화, 원화를<br className="hidden md:block" /> 손쉽고 빠르게 변환
+                </p>
+              </button>
             </div>
           </div>
         ) : activeTab === 'unit' ? (
           <UnitConverter />
+        ) : activeTab === 'currency' ? (
+          <CurrencyConverter />
         ) : (
           <QRCodeGenerator />
         )}
