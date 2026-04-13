@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import UnitConverter from '../tools/UnitConverter';
 import CurrencyConverter from '../tools/CurrencyConverter';
-import ThemeToggle from './ThemeToggle';
+import SettingsMenu from './SettingsMenu';
+
 import { useDictionary } from '../i18n/I18nProvider';
 
 export default function Dashboard() {
@@ -65,7 +66,8 @@ export default function Dashboard() {
                 <span className="hidden sm:inline">{dict.dashboard.currencyConverter.title}</span>
               </button>
             </div>
-            <ThemeToggle />
+            <SettingsMenu />
+
           </div>
         </div>
       )}
@@ -83,8 +85,9 @@ export default function Dashboard() {
                 </svg>
               </div>
               <div className="absolute top-0 right-0 p-4">
-                <ThemeToggle />
+                <SettingsMenu />
               </div>
+
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-6">
                 {dict.dashboard.title.replace('Hub', '')}<span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-pink-500">Hub</span>
               </h1>

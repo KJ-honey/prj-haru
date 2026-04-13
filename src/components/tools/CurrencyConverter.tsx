@@ -2,8 +2,13 @@
 
 import { useState, useEffect } from "react";
 import ResultCard from "../shared/ResultCard";
+import { useDictionary } from "../i18n/I18nProvider";
+
 
 export default function CurrencyConverter() {
+  const dict = useDictionary();
+  const cDict = dict.dashboard.currencyConverter;
+  
   const [value, setValue] = useState<string>("1");
   const [inputType, setInputType] = useState<"usd" | "krw" | "jpy">("usd");
   const [results, setResults] = useState({ usd: "1.00", krw: "1350", jpy: "150" });
@@ -57,21 +62,21 @@ export default function CurrencyConverter() {
   }, [value, inputType, rates]);
 
   const units = [
-    { id: "jpy", label: "일본 엔 (¥)", icon: "🇯🇵" },
-    { id: "krw", label: "한국 원 (₩)", icon: "🇰🇷" },
-    { id: "usd", label: "미국 달러 ($)", icon: "🇺🇸" },
+    { id: "jpy", label: cDict.jpyLabel, icon: "🇯🇵", short: cDict.jpy },
+    { id: "krw", label: cDict.krwLabel, icon: "🇰🇷", short: cDict.krw },
+    { id: "usd", label: cDict.usdLabel, icon: "🇺🇸", short: cDict.usd },
   ] as const;
 
   return (
     <div className="flex flex-col gap-8 animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out">
       <div className="text-center mb-4">
-        <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">환율 계산기 (Currency Converter)</h2>
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">{cDict.title}</h2>
         <p className="text-gray-500 dark:text-gray-400">
-          엔화, 원화, 달러를 손쉽게 상호 변환하세요. 
+          {cDict.description}
           {isLoading ? (
-            <span className="text-blue-500 ml-2 animate-pulse font-medium">실시간 환율 로딩 중...</span>
+            <span className="text-blue-500 ml-2 animate-pulse font-medium">{cDict.loadingRates}</span>
           ) : (
-            <span className="text-emerald-500 ml-2 font-medium">실시간 환율 적용됨</span>
+            <span className="text-emerald-500 ml-2 font-medium">{cDict.ratesApplied}</span>
           )}
         </p>
       </div>
@@ -79,18 +84,18 @@ export default function CurrencyConverter() {
       <div className="bg-white/40 dark:bg-black/20 backdrop-blur-md rounded-2xl p-6 border border-white/20 dark:border-white/10 shadow-xl">
         <div className="flex flex-col md:flex-row gap-6 mb-8 items-center">
           <div className="flex-1 w-full relative group">
-            <label className="block text-sm font-medium text-blue-600 dark:text-blue-400 mb-2 transition-colors">변환 기준값</label>
+            <label className="block text-sm font-medium text-blue-600 dark:text-blue-400 mb-2 transition-colors">{cDict.inputLabel}</label>
             <input
               type="text"
               value={value}
               onChange={(e) => setValue(e.target.value.replace(/[^0-9.]/g, ''))}
-              placeholder="숫자를 입력하세요"
+              placeholder={cDict.inputPlaceholder}
               className="w-full bg-white/70 dark:bg-gray-900/50 text-gray-900 dark:text-white border-2 border-transparent focus:border-blue-500 dark:focus:border-blue-500 rounded-xl px-4 py-4 text-xl outline-none transition-all shadow-sm focus:shadow-md"
             />
           </div>
           
           <div className="flex-1 w-full">
-            <label className="block text-sm font-medium text-blue-600 dark:text-blue-400 mb-2">기준 통화</label>
+            <label className="block text-sm font-medium text-blue-600 dark:text-blue-400 mb-2">{cDict.baseCurrencyLabel}</label>
             <div className="grid grid-cols-3 gap-2">
               {units.map((u) => (
                 <button
@@ -102,7 +107,7 @@ export default function CurrencyConverter() {
                       : "bg-white/60 dark:bg-gray-800/60 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"}`}
                 >
                   <span className="text-lg">{u.icon}</span>
-                  <span>{u.label.split(' ')[0]}</span>
+                  <span>{u.short}</span>
                 </button>
               ))}
             </div>
@@ -111,23 +116,23 @@ export default function CurrencyConverter() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <ResultCard 
-            label="일본 엔 (JPY)" 
+            label={cDict.jpyLabel} 
             value={`¥${results.jpy}`} 
             active={inputType === "jpy"} 
             icon="🇯🇵" 
-            desc={`100¥ ≈ ${Math.round(100 / rates.JPY * rates.KRW).toLocaleString()}₩`} 
+            desc={`100¥ ≈ ${Math.round(100 / rates.JPY * rates.KRW).toLocaleString()}${cDict.krw}`} 
             activeColor="sky"
           />
           <ResultCard 
-            label="한국 원 (KRW)" 
+            label={cDict.krwLabel} 
             value={`₩${results.krw}`} 
             active={inputType === "krw"} 
             icon="🇰🇷" 
-            desc={`${Math.round(rates.KRW).toLocaleString()}₩ ≈ $1`} 
+            desc={`${Math.round(rates.KRW).toLocaleString()}${cDict.krw} ≈ $1`} 
             activeColor="sky"
           />
           <ResultCard 
-            label="미국 달러 (USD)" 
+            label={cDict.usdLabel} 
             value={`$${results.usd}`} 
             active={inputType === "usd"} 
             icon="🇺🇸" 
