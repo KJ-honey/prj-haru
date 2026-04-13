@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import ResultCard from "../shared/ResultCard";
 
 export default function CurrencyConverter() {
   const [value, setValue] = useState<string>("1");
@@ -115,6 +116,7 @@ export default function CurrencyConverter() {
             active={inputType === "jpy"} 
             icon="🇯🇵" 
             desc={`100¥ ≈ ${Math.round(100 / rates.JPY * rates.KRW).toLocaleString()}₩`} 
+            activeColor="sky"
           />
           <ResultCard 
             label="한국 원 (KRW)" 
@@ -122,6 +124,7 @@ export default function CurrencyConverter() {
             active={inputType === "krw"} 
             icon="🇰🇷" 
             desc={`${Math.round(rates.KRW).toLocaleString()}₩ ≈ $1`} 
+            activeColor="sky"
           />
           <ResultCard 
             label="미국 달러 (USD)" 
@@ -129,30 +132,9 @@ export default function CurrencyConverter() {
             active={inputType === "usd"} 
             icon="🇺🇸" 
             desc={`$1 ≈ ${Math.round(rates.JPY).toLocaleString()}¥`} 
+            activeColor="sky"
           />
         </div>
-      </div>
-    </div>
-  );
-}
-
-function ResultCard({ label, value, active, icon, desc }: { label: string, value: string, active: boolean, icon: string, desc: string }) {
-  return (
-    <div className={`p-5 rounded-2xl border transition-all duration-500 flex flex-col justify-between h-full bg-white dark:bg-gray-900 group hover:-translate-y-1 hover:shadow-lg
-      ${active 
-        ? "border-sky-500 shadow-[0_0_15px_-3px_rgba(14,165,233,0.3)] ring-1 ring-sky-500 dark:border-sky-500" 
-        : "border-gray-100 dark:border-gray-800"}`}
-    >
-      <div className="flex justify-between items-start mb-4">
-        <div>
-          <span className="text-2xl mb-1 block">{icon}</span>
-          <p className="text-sm font-medium text-gray-500 dark:text-gray-400">{label}</p>
-        </div>
-        {active && <span className="px-2 py-1 bg-sky-100 dark:bg-sky-900/50 text-sky-700 dark:text-sky-400 text-xs font-bold rounded-full">입력 기준</span>}
-      </div>
-      <div>
-        <p className="text-2xl lg:text-3xl font-extrabold text-gray-900 dark:text-white truncate" title={value}>{value}</p>
-        <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">{desc}</p>
       </div>
     </div>
   );

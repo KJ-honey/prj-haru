@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from 'react';
-import UnitConverter from './UnitConverter';
-import CurrencyConverter from './CurrencyConverter';
+import UnitConverter from '../tools/UnitConverter';
+import CurrencyConverter from '../tools/CurrencyConverter';
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState<'home' | 'unit' | 'currency'>('home');
