@@ -12,12 +12,22 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Base dark mode support via system preference */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
 }
+
+/* Support for manual dark mode toggle via .dark class */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+/* Configure Tailwind 4's dark: variant to check both media query and .dark class */
+@variant dark (&:where(.dark, .dark *));
 
 body {
   background: var(--background);

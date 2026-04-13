@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import UnitConverter from '../tools/UnitConverter';
 import CurrencyConverter from '../tools/CurrencyConverter';
+import ThemeToggle from './ThemeToggle';
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState<'home' | 'unit' | 'currency'>('home');
@@ -26,40 +27,43 @@ export default function Dashboard() {
             UtilityHub
           </button>
           
-          <div className="inline-flex bg-white/50 dark:bg-gray-900/50 backdrop-blur-md p-1.5 rounded-2xl shadow-sm border border-gray-200/50 dark:border-gray-700/50">
-            <button
-              onClick={() => setActiveTab('unit')}
-              className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 flex items-center gap-2 ${
-                activeTab === 'unit' 
-                  ? 'bg-white dark:bg-gray-800 text-indigo-600 dark:text-indigo-400 shadow-md transform scale-[1.02]' 
-                  : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-white/50 dark:hover:bg-gray-800/50'
-              }`}
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/>
-                <path d="m14.5 12.5 2-2"/>
-                <path d="m11.5 9.5 2-2"/>
-                <path d="m8.5 6.5 2-2"/>
-                <path d="m17.5 15.5 2-2"/>
-              </svg>
-              <span className="hidden sm:inline">단위 환산기</span>
-            </button>
+          <div className="flex items-center gap-3">
+            <div className="inline-flex bg-white/50 dark:bg-gray-900/50 backdrop-blur-md p-1.5 rounded-2xl shadow-sm border border-gray-200/50 dark:border-gray-700/50">
+              <button
+                onClick={() => setActiveTab('unit')}
+                className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 flex items-center gap-2 ${
+                  activeTab === 'unit' 
+                    ? 'bg-white dark:bg-gray-800 text-indigo-600 dark:text-indigo-400 shadow-md transform scale-[1.02]' 
+                    : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-white/50 dark:hover:bg-gray-800/50'
+                }`}
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/>
+                  <path d="m14.5 12.5 2-2"/>
+                  <path d="m11.5 9.5 2-2"/>
+                  <path d="m8.5 6.5 2-2"/>
+                  <path d="m17.5 15.5 2-2"/>
+                </svg>
+                <span className="hidden sm:inline">단위 환산기</span>
+              </button>
 
-            <button
-              onClick={() => setActiveTab('currency')}
-              className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 flex items-center gap-2 ${
-                activeTab === 'currency' 
-                  ? 'bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 shadow-md transform scale-[1.02]' 
-                  : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-white/50 dark:hover:bg-gray-800/50'
-              }`}
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/>
-                <path d="M12 18V6"/>
-              </svg>
-              <span className="hidden sm:inline">환율 계산기</span>
-            </button>
+              <button
+                onClick={() => setActiveTab('currency')}
+                className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 flex items-center gap-2 ${
+                  activeTab === 'currency' 
+                    ? 'bg-white dark:bg-gray-800 text-blue-600 dark:text-blue-400 shadow-md transform scale-[1.02]' 
+                    : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 hover:bg-white/50 dark:hover:bg-gray-800/50'
+                }`}
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/>
+                  <path d="M12 18V6"/>
+                </svg>
+                <span className="hidden sm:inline">환율 계산기</span>
+              </button>
+            </div>
+            <ThemeToggle />
           </div>
         </div>
       )}
@@ -75,6 +79,9 @@ export default function Dashboard() {
                   <polyline points="2 17 12 22 22 17"/>
                   <polyline points="2 12 12 17 22 12"/>
                 </svg>
+              </div>
+              <div className="absolute top-0 right-0 p-4">
+                <ThemeToggle />
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-6">
                 Utility<span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-pink-500">Hub</span>
