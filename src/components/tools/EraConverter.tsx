@@ -140,10 +140,10 @@ export default function EraConverter() {
 
       <div className="bg-white/40 dark:bg-black/20 backdrop-blur-md rounded-2xl p-6 border border-white/20 dark:border-white/10 shadow-xl">
         
-        <div className="flex flex-col xl:flex-row gap-8 mb-10 items-start">
+        <div className="flex flex-col md:flex-row gap-6 mb-8 items-start">
           
           {/* Base Calendar Selection */}
-          <div className="w-full xl:w-1/3">
+          <div className="w-full md:w-1/3">
             <label className="block text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-3">{t.baseCalendar || "기준 달력"}</label>
             <div className="grid grid-cols-3 gap-2">
               {calendars.map((c) => (
@@ -163,7 +163,7 @@ export default function EraConverter() {
           </div>
 
           {/* Date Inputs */}
-          <div className="w-full xl:w-2/3 relative">
+          <div className="w-full md:w-2/3 relative">
             <label className="block text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-3">
                {calendars.find(c => c.id === baseCalendar)?.label} Input
             </label>
@@ -267,7 +267,7 @@ export default function EraConverter() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <ResultCard 
             label={t.westernYearLabel} 
             value={results.western} 
