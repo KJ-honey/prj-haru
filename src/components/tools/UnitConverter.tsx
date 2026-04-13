@@ -55,18 +55,18 @@ export default function UnitConverter() {
       <div className="bg-white/40 dark:bg-black/20 backdrop-blur-md rounded-2xl p-6 border border-white/20 dark:border-white/10 shadow-xl">
         <div className="flex flex-col md:flex-row gap-6 mb-8 items-center">
           <div className="flex-1 w-full relative group">
-            <label className="block text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-2 transition-colors">{t.inputLabel}</label>
+            <label className="block text-sm font-medium text-sky-600 dark:text-sky-400 mb-2 transition-colors">{t.inputLabel}</label>
             <input
               type="text"
               value={value}
               onChange={(e) => setValue(e.target.value.replace(/[^0-9.]/g, ''))}
               placeholder={t.inputPlaceholder}
-              className="w-full bg-white/70 dark:bg-gray-900/50 text-gray-900 dark:text-white border-2 border-transparent focus:border-indigo-500 dark:focus:border-indigo-500 rounded-xl px-4 py-4 text-xl outline-none transition-all shadow-sm focus:shadow-md"
+              className="w-full bg-white/70 dark:bg-gray-900/50 text-gray-900 dark:text-white border-2 border-transparent focus:border-sky-500 dark:focus:border-sky-500 rounded-xl px-4 py-4 text-xl outline-none transition-all shadow-sm focus:shadow-md"
             />
           </div>
           
           <div className="flex-1 w-full">
-            <label className="block text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-2">{t.baseUnitLabel}</label>
+            <label className="block text-sm font-medium text-sky-600 dark:text-sky-400 mb-2">{t.baseUnitLabel}</label>
             <div className="grid grid-cols-3 gap-2">
               {units.map((u) => (
                 <button
@@ -74,7 +74,7 @@ export default function UnitConverter() {
                   onClick={() => setInputType(u.id)}
                   className={`py-3 px-2 rounded-xl border text-sm font-semibold transition-all duration-300 hover:scale-105 active:scale-95 flex flex-col items-center justify-center gap-1
                     ${inputType === u.id 
-                      ? "bg-indigo-600 text-white border-indigo-600 shadow-md shadow-indigo-600/30" 
+                      ? "bg-sky-600 text-white border-sky-600 shadow-md shadow-sky-600/30" 
                       : "bg-white/60 dark:bg-gray-800/60 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"}`}
                 >
                   <span className="text-lg">{u.icon}</span>
@@ -92,7 +92,7 @@ export default function UnitConverter() {
             active={inputType === "jou"} 
             icon="🇯🇵" 
             desc="1畳 ≈ 1.62m²" 
-            activeColor="indigo"
+            activeColor="sky"
           />
           <ResultCard 
             label={t.m2 || "평방미터 (m²)"} 
@@ -100,7 +100,7 @@ export default function UnitConverter() {
             active={inputType === "m2"} 
             icon="📏" 
             desc="" 
-            activeColor="indigo"
+            activeColor="sky"
           />
           <ResultCard 
             label={t.pyeong || "한국식 평 (坪)"} 
@@ -108,7 +108,7 @@ export default function UnitConverter() {
             active={inputType === "pyeong"} 
             icon="🇰🇷" 
             desc="1평 ≈ 3.305m²" 
-            activeColor="indigo"
+            activeColor="sky"
           />
         </div>
       </div>

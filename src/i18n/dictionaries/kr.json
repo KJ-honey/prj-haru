@@ -32,6 +32,22 @@
       "krw": "원",
       "usd": "달러"
     },
+    "eraConverter": {
+      "title": "연호-서기 변환기",
+      "description": "레이와, 헤이세이 등 일본 연호와 서기 연도를 즉시 변환",
+      "subtitle": "일본 연호와 서기 연도를 상호 변환하세요.",
+      "westernYearLabel": "서기 연도",
+      "japaneseEraLabel": "일본 연호",
+      "reiwa": "레이와 (令和)",
+      "heisei": "헤이세이 (平成)",
+      "showa": "쇼와 (昭和)",
+      "taisho": "다이쇼 (大正)",
+      "meiji": "메이지 (明治)",
+      "yearInputPlaceholder": "예: 2024",
+      "eraYearPlaceholder": "예: 6",
+      "westernYearStr": "{year}년",
+      "eraYearStr": "{year}년"
+    },
     "settings": {
       "title": "설정",
       "theme": "테마",

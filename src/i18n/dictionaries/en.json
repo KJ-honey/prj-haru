@@ -32,6 +32,22 @@
       "krw": "KRW",
       "usd": "USD"
     },
+    "eraConverter": {
+      "title": "Japanese Era Converter",
+      "description": "Convert Western years to Japanese Eras (Reiwa, Heisei, etc.)",
+      "subtitle": "Instantly match Japanese eras with Western years.",
+      "westernYearLabel": "Western Year",
+      "japaneseEraLabel": "Japanese Era",
+      "reiwa": "Reiwa",
+      "heisei": "Heisei",
+      "showa": "Showa",
+      "taisho": "Taisho",
+      "meiji": "Meiji",
+      "yearInputPlaceholder": "e.g. 2024",
+      "eraYearPlaceholder": "e.g. 6",
+      "westernYearStr": "Year {year}",
+      "eraYearStr": "Year {year}"
+    },
     "settings": {
       "title": "Settings",
       "theme": "Theme",

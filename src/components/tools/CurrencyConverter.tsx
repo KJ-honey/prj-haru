@@ -74,7 +74,7 @@ export default function CurrencyConverter() {
         <p className="text-gray-500 dark:text-gray-400">
           {cDict.description}
           {isLoading ? (
-            <span className="text-blue-500 ml-2 animate-pulse font-medium">{cDict.loadingRates}</span>
+            <span className="text-indigo-500 ml-2 animate-pulse font-medium">{cDict.loadingRates}</span>
           ) : (
             <span className="text-emerald-500 ml-2 font-medium">{cDict.ratesApplied}</span>
           )}
@@ -84,18 +84,18 @@ export default function CurrencyConverter() {
       <div className="bg-white/40 dark:bg-black/20 backdrop-blur-md rounded-2xl p-6 border border-white/20 dark:border-white/10 shadow-xl">
         <div className="flex flex-col md:flex-row gap-6 mb-8 items-center">
           <div className="flex-1 w-full relative group">
-            <label className="block text-sm font-medium text-blue-600 dark:text-blue-400 mb-2 transition-colors">{cDict.inputLabel}</label>
+            <label className="block text-sm font-medium text-emerald-600 dark:text-emerald-400 mb-2 transition-colors">{cDict.inputLabel}</label>
             <input
               type="text"
               value={value}
               onChange={(e) => setValue(e.target.value.replace(/[^0-9.]/g, ''))}
               placeholder={cDict.inputPlaceholder}
-              className="w-full bg-white/70 dark:bg-gray-900/50 text-gray-900 dark:text-white border-2 border-transparent focus:border-blue-500 dark:focus:border-blue-500 rounded-xl px-4 py-4 text-xl outline-none transition-all shadow-sm focus:shadow-md"
+              className="w-full bg-white/70 dark:bg-gray-900/50 text-gray-900 dark:text-white border-2 border-transparent focus:border-emerald-500 dark:focus:border-emerald-500 rounded-xl px-4 py-4 text-xl outline-none transition-all shadow-sm focus:shadow-md"
             />
           </div>
           
           <div className="flex-1 w-full">
-            <label className="block text-sm font-medium text-blue-600 dark:text-blue-400 mb-2">{cDict.baseCurrencyLabel}</label>
+            <label className="block text-sm font-medium text-emerald-600 dark:text-emerald-400 mb-2">{cDict.baseCurrencyLabel}</label>
             <div className="grid grid-cols-3 gap-2">
               {units.map((u) => (
                 <button
@@ -103,7 +103,7 @@ export default function CurrencyConverter() {
                   onClick={() => setInputType(u.id)}
                   className={`py-3 px-2 rounded-xl border text-sm font-semibold transition-all duration-300 hover:scale-105 active:scale-95 flex flex-col items-center justify-center gap-1
                     ${inputType === u.id 
-                      ? "bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-600/30" 
+                      ? "bg-emerald-600 text-white border-emerald-600 shadow-md shadow-emerald-600/30" 
                       : "bg-white/60 dark:bg-gray-800/60 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700"}`}
                 >
                   <span className="text-lg">{u.icon}</span>
@@ -121,7 +121,7 @@ export default function CurrencyConverter() {
             active={inputType === "jpy"} 
             icon="🇯🇵" 
             desc={`100¥ ≈ ${Math.round(100 / rates.JPY * rates.KRW).toLocaleString()}${cDict.krw}`} 
-            activeColor="sky"
+            activeColor="emerald"
           />
           <ResultCard 
             label={cDict.krwLabel} 
@@ -129,7 +129,7 @@ export default function CurrencyConverter() {
             active={inputType === "krw"} 
             icon="🇰🇷" 
             desc={`${Math.round(rates.KRW).toLocaleString()}${cDict.krw} ≈ $1`} 
-            activeColor="sky"
+            activeColor="emerald"
           />
           <ResultCard 
             label={cDict.usdLabel} 
@@ -137,7 +137,7 @@ export default function CurrencyConverter() {
             active={inputType === "usd"} 
             icon="🇺🇸" 
             desc={`$1 ≈ ${Math.round(rates.JPY).toLocaleString()}¥`} 
-            activeColor="sky"
+            activeColor="emerald"
           />
         </div>
       </div>
