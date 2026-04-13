@@ -58,7 +58,7 @@ export default function ResultCard({
         )}
       </div>
       <div>
-        <p className="text-2xl lg:text-3xl font-extrabold text-gray-900 dark:text-white truncate" title={value}>{value}</p>
+        <p className="text-xl lg:text-2xl font-extrabold text-gray-900 dark:text-white break-words whitespace-normal line-clamp-2" title={value}>{value}</p>
         <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">{desc}</p>
       </div>
     </div>
