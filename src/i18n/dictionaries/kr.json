@@ -19,7 +19,29 @@
     },
     "currencyConverter": {
       "title": "환율 계산기",
-      "description": "달러, 엔화, 원화를 손쉽고 빠르게 변환"
+      "description": "달러, 엔화, 원화를 손쉽고 빠르게 변환",
+      "loadingRates": "실시간 환율 로딩 중...",
+      "ratesApplied": "실시간 환율 적용됨",
+      "inputLabel": "변환 기준값",
+      "inputPlaceholder": "숫자를 입력하세요",
+      "baseCurrencyLabel": "기준 통화",
+      "jpyLabel": "일본 엔 (JPY)",
+      "krwLabel": "한국 원 (KRW)",
+      "usdLabel": "미국 달러 (USD)",
+      "jpy": "엔",
+      "krw": "원",
+      "usd": "달러"
+    },
+    "settings": {
+      "title": "설정",
+      "theme": "테마",
+      "light": "라이트",
+      "dark": "다크",
+      "system": "시스템 설정",
+      "language": "언어",
+      "en": "English",
+      "kr": "한국어",
+      "jp": "日本語"
     },
     "footer": "© {year} UtilityHub. Crafted with Next.js & Tailwind CSS."
   }

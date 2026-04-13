@@ -19,7 +19,29 @@
     },
     "currencyConverter": {
       "title": "為替計算ツール",
-      "description": "ドル、円、ウォンを素早く簡単に変換"
+      "description": "ドル、円、ウォンを素早く簡単に変換",
+      "loadingRates": "リアルタイム為替レートを読み込み中...",
+      "ratesApplied": "リアルタイムレート適用済み",
+      "inputLabel": "変換基準値",
+      "inputPlaceholder": "数字を入力",
+      "baseCurrencyLabel": "基準通貨",
+      "jpyLabel": "日本円 (JPY)",
+      "krwLabel": "韓国ウォン (KRW)",
+      "usdLabel": "USドル (USD)",
+      "jpy": "円",
+      "krw": "ウォン",
+      "usd": "ドル"
+    },
+    "settings": {
+      "title": "設定",
+      "theme": "テーマ",
+      "light": "ライト",
+      "dark": "ダーク",
+      "system": "システム設定",
+      "language": "言語",
+      "en": "English",
+      "kr": "한국어",
+      "jp": "日本語"
     },
     "footer": "© {year} UtilityHub. Crafted with Next.js & Tailwind CSS."
   }

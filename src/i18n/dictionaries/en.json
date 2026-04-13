@@ -19,7 +19,29 @@
     },
     "currencyConverter": {
       "title": "Currency Converter",
-      "description": "Easily convert Dollars, Yen, and Won"
+      "description": "Easily convert Dollars, Yen, and Won",
+      "loadingRates": "Loading real-time rates...",
+      "ratesApplied": "Real-time rates applied",
+      "inputLabel": "Value to Convert",
+      "inputPlaceholder": "Enter a number",
+      "baseCurrencyLabel": "Base Currency",
+      "jpyLabel": "Japanese Yen (JPY)",
+      "krwLabel": "Korean Won (KRW)",
+      "usdLabel": "US Dollar (USD)",
+      "jpy": "JPY",
+      "krw": "KRW",
+      "usd": "USD"
+    },
+    "settings": {
+      "title": "Settings",
+      "theme": "Theme",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System",
+      "language": "Language",
+      "en": "English",
+      "kr": "Korean (한국어)",
+      "jp": "Japanese (日本語)"
     },
     "footer": "© {year} UtilityHub. Crafted with Next.js & Tailwind CSS."
   }
