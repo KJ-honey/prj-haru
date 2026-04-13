@@ -1,0 +1,26 @@
+{
+  "layout": {
+    "title": "UtilityHub - Multi-purpose Utility Dashboard",
+    "description": "Modern web utility dashboard for unit and currency conversion"
+  },
+  "dashboard": {
+    "title": "UtilityHub",
+    "subtitle": "From unit to currency conversion, easy tools at a glance",
+    "unitConverter": {
+      "title": "Unit Converter",
+      "description": "Quickly and accurately convert units like real estate areas",
+      "subtitle": "Easily convert between real estate area units.",
+      "inputLabel": "Value to Convert",
+      "inputPlaceholder": "Enter a number",
+      "baseUnitLabel": "Base Unit",
+      "jou": "Japanese Jou (畳)",
+      "m2": "Square Meters (m²)",
+      "pyeong": "Korean Pyeong (坪)"
+    },
+    "currencyConverter": {
+      "title": "Currency Converter",
+      "description": "Easily convert Dollars, Yen, and Won"
+    },
+    "footer": "© {year} UtilityHub. Crafted with Next.js & Tailwind CSS."
+  }
+}

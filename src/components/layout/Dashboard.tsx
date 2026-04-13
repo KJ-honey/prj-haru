@@ -4,9 +4,11 @@ import { useState } from 'react';
 import UnitConverter from '../tools/UnitConverter';
 import CurrencyConverter from '../tools/CurrencyConverter';
 import ThemeToggle from './ThemeToggle';
+import { useDictionary } from '../i18n/I18nProvider';
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState<'home' | 'unit' | 'currency'>('home');
+  const dict = useDictionary();
 
   return (
     <div className="w-full flex-1 flex flex-col">
@@ -44,7 +46,7 @@ export default function Dashboard() {
                   <path d="m8.5 6.5 2-2"/>
                   <path d="m17.5 15.5 2-2"/>
                 </svg>
-                <span className="hidden sm:inline">단위 환산기</span>
+                <span className="hidden sm:inline">{dict.dashboard.unitConverter.title}</span>
               </button>
 
               <button
@@ -60,7 +62,7 @@ export default function Dashboard() {
                   <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/>
                   <path d="M12 18V6"/>
                 </svg>
-                <span className="hidden sm:inline">환율 계산기</span>
+                <span className="hidden sm:inline">{dict.dashboard.currencyConverter.title}</span>
               </button>
             </div>
             <ThemeToggle />
@@ -84,10 +86,10 @@ export default function Dashboard() {
                 <ThemeToggle />
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-6">
-                Utility<span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-pink-500">Hub</span>
+                {dict.dashboard.title.replace('Hub', '')}<span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-pink-500">Hub</span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 font-medium">
-                단위 계산부터 환율 변환까지, 간편한 도구 모음
+                {dict.dashboard.subtitle}
               </p>
             </header>
 
@@ -105,9 +107,9 @@ export default function Dashboard() {
                     <path d="m17.5 15.5 2-2"/>
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">단위 환산기</h3>
+                <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">{dict.dashboard.unitConverter.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm md:text-base leading-relaxed">
-                  부동산 면적 등 다양한 단위를<br className="hidden md:block" /> 빠르고 정확하게 변환
+                  {dict.dashboard.unitConverter.description}
                 </p>
               </button>
 
@@ -122,9 +124,9 @@ export default function Dashboard() {
                     <path d="M12 18V6"/>
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">환율 계산기</h3>
+                <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">{dict.dashboard.currencyConverter.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm md:text-base leading-relaxed">
-                  달러, 엔화, 원화를<br className="hidden md:block" /> 손쉽고 빠르게 변환
+                  {dict.dashboard.currencyConverter.description}
                 </p>
               </button>
             </div>

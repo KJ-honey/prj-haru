@@ -1,0 +1,26 @@
+{
+  "layout": {
+    "title": "UtilityHub - 多目的ユーティリティダッシュボード",
+    "description": "単位換算や為替変換をサポートするモダンウェブユーティリティ"
+  },
+  "dashboard": {
+    "title": "UtilityHub",
+    "subtitle": "単位計算から為替変換まで、便利なツール集",
+    "unitConverter": {
+      "title": "単位換算ツール",
+      "description": "不動産面積など様々な単位を素早く正確に変換",
+      "subtitle": "不動産面積の単位を簡単に変換できます。",
+      "inputLabel": "変換基準値",
+      "inputPlaceholder": "数字を入力",
+      "baseUnitLabel": "基準単位",
+      "jou": "日本式 畳",
+      "m2": "平方メートル (m²)",
+      "pyeong": "韓国式 坪"
+    },
+    "currencyConverter": {
+      "title": "為替計算ツール",
+      "description": "ドル、円、ウォンを素早く簡単に変換"
+    },
+    "footer": "© {year} UtilityHub. Crafted with Next.js & Tailwind CSS."
+  }
+}
