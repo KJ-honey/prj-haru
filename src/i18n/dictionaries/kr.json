@@ -66,7 +66,8 @@
       "language": "언어",
       "en": "English",
       "kr": "한국어",
-      "jp": "日本語"
+      "jp": "日本語",
+      "tools": "도구"
     },
     "footer": "© {year} UtilityHub. Crafted with Next.js & Tailwind CSS."
   }
