@@ -10,11 +10,11 @@ export default function EraConverter() {
   const t = dict.dashboard?.eraConverter || {};
 
   const eras = [
-    { id: "reiwa", name: t.reiwa || "Reiwa", start: 2019, icon: "🌸" },
-    { id: "heisei", name: t.heisei || "Heisei", start: 1989, icon: "🗼" },
-    { id: "showa", name: t.showa || "Showa", start: 1926, icon: "📻" },
-    { id: "taisho", name: t.taisho || "Taisho", start: 1912, icon: "🚂" },
-    { id: "meiji", name: t.meiji || "Meiji", start: 1868, icon: "🏯" }
+    { id: "reiwa", name: t.reiwa || "Reiwa", start: 2019, startM: 5, startD: 1, icon: "🌸" },
+    { id: "heisei", name: t.heisei || "Heisei", start: 1989, startM: 1, startD: 8, icon: "🗼" },
+    { id: "showa", name: t.showa || "Showa", start: 1926, startM: 12, startD: 25, icon: "📻" },
+    { id: "taisho", name: t.taisho || "Taisho", start: 1912, startM: 7, startD: 30, icon: "🚂" },
+    { id: "meiji", name: t.meiji || "Meiji", start: 1868, startM: 10, startD: 23, icon: "🏯" }
   ];
 
   const calendars = [
@@ -92,10 +92,13 @@ export default function EraConverter() {
       : `${wYearStr} ${wMonth}${t.month} ${wDay}${t.day}`;
 
     // 2. Japanese Formatting
-    let selectedEra = eras[0];
+    let selectedEra = eras[eras.length - 1]; // Default to Meiji
     for (let i = 0; i < eras.length; i++) {
-      if (wYear >= eras[i].start) {
-        selectedEra = eras[i];
+      const e = eras[i] as any;
+      const sm = e.startM || 1;
+      const sd = e.startD || 1;
+      if (wYear > e.start || (wYear === e.start && wMonth > sm) || (wYear === e.start && wMonth === sm && wDay >= sd)) {
+        selectedEra = e;
         break;
       }
     }
