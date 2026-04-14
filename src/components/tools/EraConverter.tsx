@@ -46,6 +46,21 @@ export default function EraConverter() {
       return;
     }
 
+    // Auto-correct Japanese Era years if they exceed the maximum for that era
+    if (baseCalendar === "japanese") {
+      const eraIndex = eras.findIndex(e => e.id === eraId);
+      if (eraIndex > 0) { // All eras except the current one (Reiwa)
+        const currentEra = eras[eraIndex];
+        const nextEra = eras[eraIndex - 1]; // eras is sorted newest first
+        const maxYear = nextEra.start - currentEra.start + 1;
+        const inputYear = parseInt(year, 10);
+        if (!isNaN(inputYear) && inputYear > maxYear) {
+          setYear(maxYear.toString());
+          return;
+        }
+      }
+    }
+
     const y = parseInt(year, 10);
     const m = parseInt(month || "1", 10);
     const d = parseInt(day || "1", 10);
