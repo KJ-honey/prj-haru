@@ -13,10 +13,10 @@ export default function Navbar({ activeTab, onSelectTab, tools }: NavbarProps) {
   if (activeTab === 'home') return null;
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between mb-8 pb-4 border-b border-gray-200/50 dark:border-gray-800/50 animate-in fade-in slide-in-from-top-4 duration-500">
+    <div className="flex items-center justify-between mb-8 pb-4 border-b border-gray-200/50 dark:border-gray-800/50 animate-in fade-in slide-in-from-top-4 duration-500">
       <button 
         onClick={() => onSelectTab('home')}
-        className="flex items-center gap-3 text-xl font-extrabold text-gray-900 dark:text-white mb-4 md:mb-0 hover:opacity-80 transition-opacity"
+        className="flex items-center gap-2 md:gap-3 text-lg md:text-xl font-extrabold text-gray-900 dark:text-white hover:opacity-80 transition-opacity"
       >
         <div className="p-1.5 rounded-lg bg-gradient-to-br from-indigo-500 to-pink-500 text-white shadow-md">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
