@@ -1,4 +1,6 @@
 "use client";
+import { useDictionary } from "../i18n/I18nProvider";
+
 
 interface ResultCardProps {
   label: string;
@@ -9,14 +11,15 @@ interface ResultCardProps {
   activeColor?: "emerald" | "sky" | "indigo";
 }
 
-export default function ResultCard({ 
-  label, 
-  value, 
-  active, 
-  icon, 
-  desc, 
-  activeColor = "emerald" 
+export default function ResultCard({
+  label,
+  value,
+  active,
+  icon,
+  desc,
+  activeColor = "emerald"
 }: ResultCardProps) {
+  const dict = useDictionary();
   const colorMap = {
     emerald: {
       border: "border-emerald-500 ring-emerald-500 dark:border-emerald-500",
@@ -42,8 +45,8 @@ export default function ResultCard({
 
   return (
     <div className={`p-5 rounded-2xl border transition-all duration-500 flex flex-col justify-between h-full bg-white dark:bg-gray-900 group hover:-translate-y-1 hover:shadow-lg
-      ${active 
-        ? `${selectedColor.border} ${selectedColor.shadow} ring-1` 
+      ${active
+        ? `${selectedColor.border} ${selectedColor.shadow} ring-1`
         : "border-gray-100 dark:border-gray-800"}`}
     >
       <div className="flex justify-between items-start mb-4">
@@ -53,7 +56,7 @@ export default function ResultCard({
         </div>
         {active && (
           <span className={`px-2 py-1 ${selectedColor.bg} ${selectedColor.text} text-xs font-bold rounded-full`}>
-            입력 기준
+            {dict.dashboard.baseInput}
           </span>
         )}
       </div>

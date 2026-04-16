@@ -81,6 +81,7 @@
       "jp": "日本語",
       "tools": "도구"
     },
+    "baseInput": "입력 기준",
     "footer": "© {year} UtilityHub. Crafted with Next.js & Tailwind CSS."
   }
 }
