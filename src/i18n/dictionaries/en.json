@@ -57,6 +57,18 @@
       "lunarStr": "Lunar {year}-{month}-{day}",
       "invalidDate": "Invalid Date"
     },
+    "ageCalculator": {
+      "title": "Age Calculator",
+      "description": "Calculate your international and Korean age easily",
+      "subtitle": "Enter your date of birth to check your age on a specific date.",
+      "ageTypeLabel": "Age Type",
+      "internationalAge": "International Age",
+      "koreanAge": "Korean Age",
+      "birthDateLabel": "Date of Birth",
+      "referenceDateLabel": "Reference Date",
+      "resultTitle": "Your age is?",
+      "resultAge": "{age} years old"
+    },
     "settings": {
       "title": "Settings",
       "theme": "Theme",

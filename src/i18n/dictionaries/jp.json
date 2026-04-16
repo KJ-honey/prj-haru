@@ -57,6 +57,18 @@
       "lunarStr": "旧暦 {year}-{month}-{day}",
       "invalidDate": "無効な日付"
     },
+    "ageCalculator": {
+      "title": "年齢計算ツール",
+      "description": "満年齢と数え年を簡単に計算",
+      "subtitle": "生年月日を入力して基準日時点の年齢を確認してください。",
+      "ageTypeLabel": "年齢の種類",
+      "internationalAge": "満年齢",
+      "koreanAge": "数え年",
+      "birthDateLabel": "生年月日",
+      "referenceDateLabel": "基準日",
+      "resultTitle": "あなたの年齢は？",
+      "resultAge": "{age} 歳"
+    },
     "settings": {
       "title": "設定",
       "theme": "テーマ",

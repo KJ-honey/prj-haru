@@ -18,5 +18,10 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - **터미널 환경 문제:** AI 에이전트가 `npm` 등의 명령어를 실행할 때, 비대화형 셸(non-interactive shell)의 기본 `$PATH`에 `/usr/local/bin`이 포함되어 있지 않아 `command not found` 에러가 발생합니다.
 - **해결 방식:** 명령어를 실행할 때 `export PATH=$PATH:/usr/local/bin`을 접두어로 추가하여 실행하면 `node` 및 `npm`을 정상적으로 사용할 수 있습니다.
 - **향후 작업 시 고려사항:** 이제 `npm` 명령어를 사용할 수 있으므로, 필요한 경우 라이브러리 설치(`npm install`)가 가능합니다. 단, 패키지 설치나 스크립트 실행 시 반드시 위와 같이 `$PATH`를 업데이트하는 명령어를 함께 사용해야 합니다.
+- **UI 구현 사항:** 되도록 기존 툴의 UI를 참고하여 구현해주세요.
+- **브라우저 영속화 관리 (Persistence Session Log):**
+  - **테마:** `next-themes`를 통해 `localStorage`에 자동 영속화됨 (Key: `theme`).
+  - **언어:** URL Path (`/[lang]/...`)를 통해 상태가 유지됨.
+  - **참고:** 현재 탭 상태 및 사용자 입력값은 영속화되지 않으며, 필요 시 `localStorage` 기반의 추가 구현이 필요함.
 
 <!-- END:project-prompt -->

@@ -4,11 +4,12 @@ import { useState } from 'react';
 import UnitConverter from '../tools/UnitConverter';
 import CurrencyConverter from '../tools/CurrencyConverter';
 import EraConverter from '../tools/EraConverter';
+import AgeCalculator from '../tools/AgeCalculator';
 import Navbar from './Navbar';
 import HomeView from './HomeView';
 import { useDictionary } from '../i18n/I18nProvider';
 
-type TabType = 'home' | 'unit' | 'currency' | 'era';
+type TabType = 'home' | 'unit' | 'currency' | 'era' | 'age';
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState<TabType>('home');
@@ -43,6 +44,15 @@ export default function Dashboard() {
         </svg>
       )
     },
+    { 
+      id: 'age', 
+      label: (dict.dashboard as any).ageCalculator?.title || 'Age Calculator',
+      icon: (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+      )
+    },
   ];
 
   return (
@@ -61,8 +71,10 @@ export default function Dashboard() {
           <UnitConverter />
         ) : activeTab === 'currency' ? (
           <CurrencyConverter />
-        ) : (
+        ) : activeTab === 'era' ? (
           <EraConverter />
+        ) : (
+          <AgeCalculator />
         )}
       </div>
     </div>
