@@ -48,11 +48,11 @@ export default function SegmentedControl({
         <button
           key={item.id}
           onClick={() => onChange(item.id)}
-          className={`py-3 px-1 rounded-[14px] border text-sm font-semibold transition-all duration-300 hover:scale-105 active:scale-95 flex flex-col items-center justify-center gap-1.5
+          className={`py-3 px-2 md:px-1 rounded-[14px] border text-sm font-semibold transition-all duration-300 hover:scale-105 active:scale-95 flex flex-row md:flex-col items-center justify-center gap-1.5
             ${value === item.id ? colorMap[accentColor].active : inactive}`}
         >
-          <span className="text-xl">{item.icon}</span>
-          <span className="truncate w-full text-center px-1">{item.label}</span>
+          <span className="text-lg md:text-xl">{item.icon}</span>
+          <span className="truncate text-center text-xs md:text-sm">{item.label}</span>
         </button>
       ))}
     </div>

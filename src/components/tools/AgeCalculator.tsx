@@ -52,9 +52,10 @@ export default function AgeCalculator() {
 
   return (
     <ToolLayout title={t.title || "나이 계산기"} subtitle={t.subtitle || "생년월일을 입력하여 기준일자의 나이를 확인하세요."}>
-      <div className="flex flex-col gap-6 mb-8 items-center justify-center max-w-2xl mx-auto w-full">
-        <div className="w-full max-w-xs">
-          <SectionLabel accentColor="sky" align="center">
+      <div className="flex flex-col md:flex-row gap-6 mb-8 items-start">
+        {/* Age Type Selection */}
+        <div className="w-full md:w-1/3">
+          <SectionLabel accentColor="sky">
             {t.ageTypeLabel || "나이 종류"}
           </SectionLabel>
           <SegmentedControl
@@ -66,42 +67,45 @@ export default function AgeCalculator() {
           />
         </div>
 
-        <div className="flex flex-col md:flex-row w-full gap-6 mt-4">
-          <div className="w-full md:w-1/2">
-            <SectionLabel accentColor="sky">
-              {t.birthDateLabel || "생년월일"}
-            </SectionLabel>
-            <ToolInput
-              value={birthDate}
-              onChange={setBirthDate}
-              type="date"
-              accentColor="sky"
-            />
-          </div>
-          <div className="w-full md:w-1/2">
-            <SectionLabel accentColor="sky">
-              {t.referenceDateLabel || "기준일자"}
-            </SectionLabel>
-            <ToolInput
-              value={referenceDate}
-              onChange={setReferenceDate}
-              type="date"
-              accentColor="sky"
-            />
-          </div>
+        {/* Birth Date */}
+        <div className="w-full md:w-1/3">
+          <SectionLabel accentColor="sky">
+            {t.birthDateLabel || "생년월일"}
+          </SectionLabel>
+          <ToolInput
+            value={birthDate}
+            onChange={setBirthDate}
+            type="date"
+            accentColor="sky"
+            minHeight="74px"
+          />
         </div>
 
-        <ResultDisplay accentColor="sky" className="mt-8">
-          <h3 className="text-xl font-medium text-gray-600 dark:text-gray-400 mb-4">
-            {t.resultTitle || "당신의 나이는?"}
-          </h3>
-          <div className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-sky-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 pb-2">
-            {calculatedAge !== null 
-              ? (t.resultAge || "{age} 살").replace("{age}", calculatedAge.toString())
-              : "-"}
-          </div>
-        </ResultDisplay>
+        {/* Reference Date */}
+        <div className="w-full md:w-1/3">
+          <SectionLabel accentColor="sky">
+            {t.referenceDateLabel || "기준일자"}
+          </SectionLabel>
+          <ToolInput
+            value={referenceDate}
+            onChange={setReferenceDate}
+            type="date"
+            accentColor="sky"
+            minHeight="74px"
+          />
+        </div>
       </div>
+
+      <ResultDisplay accentColor="sky">
+        <h3 className="text-xl font-medium text-gray-600 dark:text-gray-400 mb-4">
+          {t.resultTitle || "당신의 나이는?"}
+        </h3>
+        <div className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-sky-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 pb-2">
+          {calculatedAge !== null 
+            ? (t.resultAge || "{age} 살").replace("{age}", calculatedAge.toString())
+            : "-"}
+        </div>
+      </ResultDisplay>
     </ToolLayout>
   );
 }
