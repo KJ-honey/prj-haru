@@ -1,11 +1,11 @@
 {
   "layout": {
-    "title": "하루 - 다목적 유틸리티 모음",
-    "description": "단위 환산 및 환율 변환을 지원하는 모던 웹 유틸리티 대시보드"
+    "title": "도구 - 한일 생활 도구 모음",
+    "description": "한국과 일본의 일상에 필요한 계산과 변환을 모아둔 생활 도구 대시보드"
   },
   "dashboard": {
-    "title": "하루",
-    "subtitle": "단위 계산부터 환율 변환까지, 간편한 도구 모음",
+    "title": "도구",
+    "subtitle": "한국과 일본의 일상을 가볍게 이어주는 생활 도구",
     "unitConverter": {
       "title": "단위 환산기",
       "description": "부동산 면적 등 다양한 단위를 빠르고 정확하게 변환",
@@ -82,6 +82,6 @@
       "tools": "도구"
     },
     "baseInput": "입력 기준",
-    "footer": "© {year} 하루. Crafted with Next.js & Tailwind CSS."
+    "footer": "© {year} 도구. Crafted with Next.js & Tailwind CSS."
   }
 }

@@ -1,11 +1,11 @@
 {
   "layout": {
-    "title": "春 - 多目的ユーティリティダッシュボード",
-    "description": "単位換算や為替変換をサポートするモダンウェブユーティリティ"
+    "title": "道具 - 日韓くらしのツール集",
+    "description": "日本と韓国の日々に役立つ計算と変換をまとめたくらしのダッシュボード"
   },
   "dashboard": {
-    "title": "春",
-    "subtitle": "単位計算から為替変換まで、便利なツール集",
+    "title": "道具",
+    "subtitle": "日本と韓国の毎日をそっとつなぐくらしのツール",
     "unitConverter": {
       "title": "単位換算ツール",
       "description": "不動産面積など様々な単位を素早く正確に変換",
@@ -82,6 +82,6 @@
       "tools": "ツール"
     },
     "baseInput": "基準値",
-    "footer": "© {year} 春. Crafted with Next.js & Tailwind CSS."
+    "footer": "© {year} 道具. Crafted with Next.js & Tailwind CSS."
   }
 }

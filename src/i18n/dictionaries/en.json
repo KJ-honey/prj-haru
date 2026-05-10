@@ -1,11 +1,11 @@
 {
   "layout": {
-    "title": "Haru - Multi-purpose Utility Dashboard",
-    "description": "Modern web utility dashboard for unit and currency conversion"
+    "title": "Dogu - Korea-Japan Daily Tools",
+    "description": "A daily dashboard for calculations and conversions across Korean and Japanese life"
   },
   "dashboard": {
-    "title": "Haru",
-    "subtitle": "From unit to currency conversion, easy tools at a glance",
+    "title": "Dogu",
+    "subtitle": "Daily tools that make life between Korea and Japan feel lighter",
     "unitConverter": {
       "title": "Unit Converter",
       "description": "Quickly and accurately convert units like real estate areas",
@@ -82,6 +82,6 @@
       "tools": "Tools"
     },
     "baseInput": "Base Input",
-    "footer": "© {year} Haru. Crafted with Next.js & Tailwind CSS."
+    "footer": "© {year} Dogu. Crafted with Next.js & Tailwind CSS."
   }
 }

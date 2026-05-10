@@ -1,6 +1,6 @@
 {
   "apphosting": {
-    "backendId": "prj-haru-app",
+    "backendId": "prj-dogu-app",
     "rootDir": "/",
     "ignore": [
       "node_modules",
