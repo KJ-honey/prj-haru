@@ -78,7 +78,9 @@ export default function HomeView({ onSelectTool }: HomeViewProps) {
         </div>
 
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-6">
-          {dict.dashboard.title.replace('Hub', '')}<span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-pink-500">Hub</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-pink-500">
+            {dict.dashboard.title}
+          </span>
         </h1>
         <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 font-medium">
           {dict.dashboard.subtitle}

@@ -1,10 +1,10 @@
 {
   "layout": {
-    "title": "UtilityHub - 다목적 유틸리티 모음",
+    "title": "하루 - 다목적 유틸리티 모음",
     "description": "단위 환산 및 환율 변환을 지원하는 모던 웹 유틸리티 대시보드"
   },
   "dashboard": {
-    "title": "UtilityHub",
+    "title": "하루",
     "subtitle": "단위 계산부터 환율 변환까지, 간편한 도구 모음",
     "unitConverter": {
       "title": "단위 환산기",
@@ -82,6 +82,6 @@
       "tools": "도구"
     },
     "baseInput": "입력 기준",
-    "footer": "© {year} UtilityHub. Crafted with Next.js & Tailwind CSS."
+    "footer": "© {year} 하루. Crafted with Next.js & Tailwind CSS."
   }
 }

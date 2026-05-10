@@ -1,5 +1,6 @@
 "use client";
 
+import { useDictionary } from '../i18n/I18nProvider';
 import ToolSelector, { Tool } from './ToolSelector';
 import SettingsMenu from './SettingsMenu';
 
@@ -10,6 +11,7 @@ interface NavbarProps {
 }
 
 export default function Navbar({ activeTab, onSelectTab, tools }: NavbarProps) {
+  const dict = useDictionary();
   if (activeTab === 'home') return null;
 
   return (
@@ -25,7 +27,7 @@ export default function Navbar({ activeTab, onSelectTab, tools }: NavbarProps) {
             <polyline points="2 12 12 17 22 12"/>
           </svg>
         </div>
-        UtilityHub
+        {dict.dashboard.title}
       </button>
       
       <div className="flex items-center gap-3">

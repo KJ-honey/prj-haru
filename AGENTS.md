@@ -5,7 +5,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 <!-- END:nextjs-agent-rules -->
 
 <!-- BEGIN:project-prompt -->
-## 🚀 프로젝트: "Multi-Tool Web App" 구축 계획
+## 🚀 프로젝트: "prj-haru" 구축 계획
 
 ### 1. 프로젝트 개요
 - **목표:** 개인용 유틸리티 도구 모음 웹 앱 제작
