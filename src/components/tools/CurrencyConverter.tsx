@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ResultCard, ToolLayout, SegmentedControl, SectionLabel, ToolInput } from "../shared";
+import { ResultCard, ToolLayout, ToolForm, ToolField, SegmentedControl, ToolInput } from "../shared";
 import { useDictionary } from "../i18n/I18nProvider";
 
 export default function CurrencyConverter() {
@@ -79,9 +79,8 @@ export default function CurrencyConverter() {
 
   return (
     <ToolLayout title={cDict.title} subtitle={subtitleContent}>
-        <div className="flex flex-col md:flex-row gap-6 mb-8 items-start">
-          <div className="w-full md:w-1/3">
-            <SectionLabel accentColor="emerald">{cDict.baseCurrencyLabel}</SectionLabel>
+        <ToolForm>
+          <ToolField label={cDict.baseCurrencyLabel} accentColor="emerald">
             <SegmentedControl
               items={units}
               value={inputType}
@@ -89,10 +88,9 @@ export default function CurrencyConverter() {
               accentColor="emerald"
               columns={3}
             />
-          </div>
+          </ToolField>
 
-          <div className="w-full md:w-2/3">
-            <SectionLabel accentColor="emerald">{cDict.inputLabel}</SectionLabel>
+          <ToolField label={cDict.inputLabel} accentColor="emerald" span={2}>
             <ToolInput
               value={value}
               onChange={setValue}
@@ -101,8 +99,8 @@ export default function CurrencyConverter() {
               filter="decimal"
               minHeight="74px"
             />
-          </div>
-        </div>
+          </ToolField>
+        </ToolForm>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <ResultCard 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ResultCard, ToolLayout, SegmentedControl, SectionLabel, ToolInput } from "../shared";
+import { ResultCard, ToolLayout, ToolForm, ToolField, SegmentedControl, ToolInput } from "../shared";
 import { useDictionary } from "../i18n/I18nProvider";
 
 export default function UnitConverter() {
@@ -44,9 +44,8 @@ export default function UnitConverter() {
 
   return (
     <ToolLayout title={t.title} subtitle={t.subtitle}>
-        <div className="flex flex-col md:flex-row gap-6 mb-8 items-start">
-          <div className="w-full md:w-1/3">
-            <SectionLabel accentColor="sky">{t.baseUnitLabel}</SectionLabel>
+        <ToolForm>
+          <ToolField label={t.baseUnitLabel} accentColor="sky">
             <SegmentedControl
               items={units}
               value={inputType}
@@ -54,10 +53,9 @@ export default function UnitConverter() {
               accentColor="sky"
               columns={3}
             />
-          </div>
+          </ToolField>
 
-          <div className="w-full md:w-2/3">
-            <SectionLabel accentColor="sky">{t.inputLabel}</SectionLabel>
+          <ToolField label={t.inputLabel} accentColor="sky" span={2}>
             <ToolInput
               value={value}
               onChange={setValue}
@@ -66,8 +64,8 @@ export default function UnitConverter() {
               filter="decimal"
               minHeight="74px"
             />
-          </div>
-        </div>
+          </ToolField>
+        </ToolForm>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <ResultCard 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ToolLayout, SegmentedControl, SectionLabel, ToolInput, ResultDisplay } from "../shared";
+import { ToolLayout, ToolForm, ToolField, SegmentedControl, ToolInput, ResultDisplay } from "../shared";
 import { useDictionary } from "../i18n/I18nProvider";
 
 export default function AgeCalculator() {
@@ -49,12 +49,8 @@ export default function AgeCalculator() {
 
   return (
     <ToolLayout title={t.title || "나이 계산기"} subtitle={t.subtitle || "생년월일을 입력하여 기준일자의 나이를 확인하세요."}>
-      <div className="flex flex-col md:flex-row gap-6 mb-8 items-start">
-        {/* Age Type Selection */}
-        <div className="w-full md:w-1/3">
-          <SectionLabel accentColor="sky">
-            {t.ageTypeLabel || "나이 종류"}
-          </SectionLabel>
+      <ToolForm>
+        <ToolField label={t.ageTypeLabel || "나이 종류"} accentColor="sky">
           <SegmentedControl
             items={ageTypes}
             value={ageType}
@@ -62,13 +58,9 @@ export default function AgeCalculator() {
             accentColor="sky"
             columns={2}
           />
-        </div>
+        </ToolField>
 
-        {/* Birth Date */}
-        <div className="w-full md:w-1/3">
-          <SectionLabel accentColor="sky">
-            {t.birthDateLabel || "생년월일"}
-          </SectionLabel>
+        <ToolField label={t.birthDateLabel || "생년월일"} accentColor="sky">
           <ToolInput
             value={birthDate}
             onChange={setBirthDate}
@@ -76,13 +68,9 @@ export default function AgeCalculator() {
             accentColor="sky"
             minHeight="74px"
           />
-        </div>
+        </ToolField>
 
-        {/* Reference Date */}
-        <div className="w-full md:w-1/3">
-          <SectionLabel accentColor="sky">
-            {t.referenceDateLabel || "기준일자"}
-          </SectionLabel>
+        <ToolField label={t.referenceDateLabel || "기준일자"} accentColor="sky">
           <ToolInput
             value={referenceDate}
             onChange={setReferenceDate}
@@ -90,19 +78,18 @@ export default function AgeCalculator() {
             accentColor="sky"
             minHeight="74px"
           />
-        </div>
-      </div>
+        </ToolField>
+      </ToolForm>
 
-      <ResultDisplay accentColor="sky">
-        <h3 className="text-xl font-medium text-gray-600 dark:text-gray-400 mb-4">
-          {t.resultTitle || "당신의 나이는?"}
-        </h3>
-        <div className="text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-sky-600 to-indigo-600 dark:from-sky-400 dark:to-indigo-400 pb-2">
-          {calculatedAge !== null 
+      <ResultDisplay
+        title={t.resultTitle || "당신의 나이는?"}
+        value={
+          calculatedAge !== null
             ? (t.resultAge || "{age} 살").replace("{age}", calculatedAge.toString())
-            : "-"}
-        </div>
-      </ResultDisplay>
+            : "-"
+        }
+        accentColor="sky"
+      />
     </ToolLayout>
   );
 }

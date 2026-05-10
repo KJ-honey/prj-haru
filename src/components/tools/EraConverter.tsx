@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import solarLunar, { type SolarLunarResult } from "solarlunar";
-import { ResultCard, ToolLayout, SegmentedControl, SectionLabel, ToolInput, ToolSelect, InputGroup } from "../shared";
+import { ResultCard, ToolLayout, ToolForm, ToolField, SegmentedControl, ToolInput, ToolSelect, InputGroup } from "../shared";
 import { useDictionary } from "../i18n/I18nProvider";
 
 type CalendarId = "western" | "japanese" | "lunar";
@@ -164,11 +164,8 @@ export default function EraConverter() {
 
   return (
     <ToolLayout title={t.title} subtitle={t.subtitle}>
-      <div className="flex flex-col md:flex-row gap-6 mb-8 items-start">
-
-        {/* Base Calendar Selection */}
-        <div className="w-full md:w-1/3">
-          <SectionLabel accentColor="indigo">{t.baseCalendar || "기준 달력"}</SectionLabel>
+      <ToolForm>
+        <ToolField label={t.baseCalendar || "기준 달력"} accentColor="indigo">
             <SegmentedControl
               items={calendars}
               value={baseCalendar}
@@ -176,17 +173,15 @@ export default function EraConverter() {
             accentColor="indigo"
             columns={3}
           />
-        </div>
+        </ToolField>
 
-        {/* Date Inputs */}
-        <div className="w-full md:w-2/3 relative">
-          <SectionLabel accentColor="indigo">
-            {calendars.find(c => c.id === baseCalendar)?.label}
-          </SectionLabel>
-
+        <ToolField
+          label={calendars.find(c => c.id === baseCalendar)?.label}
+          accentColor="indigo"
+          span={2}
+          className="relative"
+        >
           <div className="flex flex-col sm:flex-row gap-3 items-stretch">
-
-            {/* Prefix (Japanese Era) */}
             {baseCalendar === "japanese" && (
               <ToolSelect
                 value={eraId}
@@ -197,7 +192,6 @@ export default function EraConverter() {
               />
             )}
 
-            {/* Date Fields */}
             <InputGroup>
               <ToolInput
                 value={year}
@@ -254,8 +248,8 @@ export default function EraConverter() {
             />
           </div>
 
-        </div>
-      </div>
+        </ToolField>
+      </ToolForm>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <ResultCard

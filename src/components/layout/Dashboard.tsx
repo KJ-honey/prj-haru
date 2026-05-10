@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import UnitConverter from '../tools/UnitConverter';
 import CurrencyConverter from '../tools/CurrencyConverter';
 import EraConverter from '../tools/EraConverter';
@@ -13,6 +13,10 @@ import type { DashboardTab, ToolTab } from '@/types';
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState<DashboardTab>('home');
   const dict = useDictionary();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0 });
+  }, [activeTab]);
 
   const tools: { id: ToolTab; label: string; icon: React.ReactNode }[] = [
     { 
@@ -63,7 +67,7 @@ export default function Dashboard() {
       />
 
       {/* Main Content Area */}
-      <div className="relative flex-1 flex flex-col justify-center">
+      <div className={`relative flex-1 flex flex-col ${activeTab === 'home' ? 'justify-center' : 'justify-start'}`}>
         {activeTab === 'home' ? (
           <HomeView onSelectTool={setActiveTab} />
         ) : activeTab === 'unit' ? (
