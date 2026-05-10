@@ -15,11 +15,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export async function generateMetadata({ params }: { params: { lang: 'en' | 'kr' | 'jp' } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   // Await params per Next.js 15+ conventions if applicable, but for Next 13/14 it's okay without await.
   // We'll await just in case it's a newer Next.js version where params is a promise.
   const resolvedParams = await params;
-  const dict = await getDictionary(resolvedParams.lang);
+  const dict = await getDictionary(resolvedParams.lang as 'en' | 'kr' | 'jp');
   return {
     title: dict.layout.title,
     description: dict.layout.description,
@@ -31,10 +31,10 @@ export default async function RootLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { lang: 'en' | 'kr' | 'jp' };
+  params: Promise<{ lang: string }>;
 }) {
   const resolvedParams = await params;
-  const dict = await getDictionary(resolvedParams.lang);
+  const dict = await getDictionary(resolvedParams.lang as 'en' | 'kr' | 'jp');
 
   return (
     <html
