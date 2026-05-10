@@ -2,9 +2,10 @@
 
 import { useDictionary } from '../i18n/I18nProvider';
 import SettingsMenu from './SettingsMenu';
+import type { ToolTab } from '@/types';
 
 interface HomeViewProps {
-  onSelectTool: (toolId: 'unit' | 'currency' | 'era' | 'age') => void;
+  onSelectTool: (toolId: ToolTab) => void;
 }
 
 export default function HomeView({ onSelectTool }: HomeViewProps) {
@@ -52,8 +53,8 @@ export default function HomeView({ onSelectTool }: HomeViewProps) {
     },
     {
       id: 'age' as const,
-      title: (dict.dashboard as any).ageCalculator?.title || 'Age Calculator',
-      description: (dict.dashboard as any).ageCalculator?.description || 'Calculate your age',
+      title: dict.dashboard.ageCalculator?.title || 'Age Calculator',
+      description: dict.dashboard.ageCalculator?.description || 'Calculate your age',
       icon: (
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>

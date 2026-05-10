@@ -1,10 +1,11 @@
 "use client";
 
 import React, { createContext, useContext, ReactNode } from "react";
+import type enDictionary from "@/i18n/dictionaries/en.json";
 
-type Dictionary = Record<string, any>;
+export type Dictionary = typeof enDictionary;
 
-const DictionaryContext = createContext<Dictionary>({});
+const DictionaryContext = createContext<Dictionary | null>(null);
 const LocaleContext = createContext<string>("en");
 
 export const I18nProvider = ({
@@ -26,7 +27,12 @@ export const I18nProvider = ({
 };
 
 export const useDictionary = () => {
-  return useContext(DictionaryContext);
+  const dictionary = useContext(DictionaryContext);
+  if (!dictionary) {
+    throw new Error("useDictionary must be used within I18nProvider");
+  }
+
+  return dictionary;
 };
 
 export const useLocale = () => {

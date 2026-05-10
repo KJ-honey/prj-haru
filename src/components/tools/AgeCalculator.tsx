@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useMemo, useState } from "react";
 import { ToolLayout, SegmentedControl, SectionLabel, ToolInput, ResultDisplay } from "../shared";
 import { useDictionary } from "../i18n/I18nProvider";
 
 export default function AgeCalculator() {
   const dict = useDictionary();
-  const t = (dict.dashboard as any)?.ageCalculator || {};
+  const t = dict.dashboard.ageCalculator;
 
   // today's date in YYYY-MM-DD
   const today = new Date().toISOString().split("T")[0];
@@ -14,35 +14,32 @@ export default function AgeCalculator() {
   const [ageType, setAgeType] = useState<string>("international");
   const [birthDate, setBirthDate] = useState<string>("");
   const [referenceDate, setReferenceDate] = useState<string>(today);
-  const [calculatedAge, setCalculatedAge] = useState<number | null>(null);
 
-  useEffect(() => {
+  const calculatedAge = useMemo(() => {
     if (!birthDate || !referenceDate) {
-      setCalculatedAge(null);
-      return;
+      return null;
     }
 
     const birth = new Date(birthDate);
     const ref = new Date(referenceDate);
 
     if (isNaN(birth.getTime()) || isNaN(ref.getTime())) {
-      setCalculatedAge(null);
-      return;
+      return null;
     }
 
     const birthYear = birth.getFullYear();
     const refYear = ref.getFullYear();
 
     if (ageType === "korean") {
-      setCalculatedAge(refYear - birthYear + 1);
-    } else {
-      let age = refYear - birthYear;
-      const m = ref.getMonth() - birth.getMonth();
-      if (m < 0 || (m === 0 && ref.getDate() < birth.getDate())) {
-        age--;
-      }
-      setCalculatedAge(age);
+      return refYear - birthYear + 1;
     }
+
+    let age = refYear - birthYear;
+    const m = ref.getMonth() - birth.getMonth();
+    if (m < 0 || (m === 0 && ref.getDate() < birth.getDate())) {
+      age--;
+    }
+    return age;
   }, [birthDate, referenceDate, ageType]);
 
   const ageTypes = [

@@ -3,10 +3,11 @@
 import { useDictionary } from '../i18n/I18nProvider';
 import ToolSelector, { Tool } from './ToolSelector';
 import SettingsMenu from './SettingsMenu';
+import type { DashboardTab } from '@/types';
 
 interface NavbarProps {
-  activeTab: string;
-  onSelectTab: (id: any) => void;
+  activeTab: DashboardTab;
+  onSelectTab: (id: DashboardTab) => void;
   tools: Tool[];
 }
 

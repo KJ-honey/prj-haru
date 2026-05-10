@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useMemo, useState } from "react";
 import { ResultCard, ToolLayout, SegmentedControl, SectionLabel, ToolInput } from "../shared";
 import { useDictionary } from "../i18n/I18nProvider";
 
@@ -10,17 +10,14 @@ export default function UnitConverter() {
 
   const [value, setValue] = useState<string>("1");
   const [inputType, setInputType] = useState<string>("jou");
-  const [results, setResults] = useState({ jou: "1.00", m2: "1.62", pyeong: "0.49" });
 
-  useEffect(() => {
+  const results = useMemo(() => {
     if (!value || value === ".") {
-      setResults({ jou: "0.00", m2: "0.00", pyeong: "0.00" });
-      return;
+      return { jou: "0.00", m2: "0.00", pyeong: "0.00" };
     }
     const num = parseFloat(value);
     if (isNaN(num)) {
-      setResults({ jou: "0.00", m2: "0.00", pyeong: "0.00" });
-      return;
+      return { jou: "0.00", m2: "0.00", pyeong: "0.00" };
     }
 
     let m2 = 0;
@@ -32,11 +29,11 @@ export default function UnitConverter() {
       m2 = num * 3.305785;
     }
 
-    setResults({
+    return {
       jou: (m2 / 1.62).toFixed(2),
       m2: m2.toFixed(2),
       pyeong: (m2 / 3.305785).toFixed(2),
-    });
+    };
   }, [value, inputType]);
 
   const units = [

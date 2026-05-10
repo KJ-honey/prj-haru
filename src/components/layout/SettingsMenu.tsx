@@ -1,13 +1,17 @@
 "use client";
 
 import { useTheme } from 'next-themes';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useDictionary, useLocale } from '../i18n/I18nProvider';
 import { useRouter, usePathname } from 'next/navigation';
 
 export default function SettingsMenu() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(
+    () => () => undefined,
+    () => true,
+    () => false
+  );
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const dict = useDictionary();
@@ -18,7 +22,6 @@ export default function SettingsMenu() {
   const currentLang = locale || 'en';
 
   useEffect(() => {
-    setMounted(true);
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
         setIsOpen(false);

@@ -2,16 +2,17 @@
 
 import { useState, useRef, useEffect, ReactNode } from 'react';
 import { useDictionary } from '../i18n/I18nProvider';
+import type { DashboardTab, ToolTab } from '@/types';
 
 export interface Tool {
-  id: string;
+  id: ToolTab;
   label: string;
   icon: ReactNode;
 }
 
 interface ToolSelectorProps {
-  activeTab: string;
-  onSelectTab: (id: any) => void;
+  activeTab: DashboardTab;
+  onSelectTab: (id: DashboardTab) => void;
   tools: Tool[];
 }
 
